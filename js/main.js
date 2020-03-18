@@ -3,10 +3,18 @@ $(document).ready(function() {
     var template = Handlebars.compile(source);
 
     $('.header .selettore-genere').change(function(){
-        var genereSelezionato = $(this).val().toLowerCase();
+        var genereSelezionato = $(this).val();
         console.log(genereSelezionato);
-        if (genereSelezionato == album.genre.toLowerCase()) {
-
+        if (genereSelezionato == '') {
+            $('.card').show();
+        } else {
+            $('.card').each(function(){
+                if (genereSelezionato.toLowerCase() == $(this).data('genere').toLowerCase()) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });    
         }
     });
 
